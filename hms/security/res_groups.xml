@@ -10,7 +10,13 @@
         <record id="hms_manager_group" model="res.groups">
             <field name="name"> Manager </field>
             <field name="category_id" ref="hms_category"/>
-<!--            <field name="implied_ids" eval="[(4,ref('hms_user_group'))]"/>-->
+        </record>
+
+        <!-- Global rule -->
+        <record id="own_patient_rule" model="ir.rule">
+            <field name="name">Users own students only</field>
+            <field name="model_id" ref="model_hms_patient"/>
+            <field name="domain_force">[('create_uid','=',user.id)]</field>
         </record>
 
     </data>
