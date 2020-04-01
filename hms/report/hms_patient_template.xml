@@ -1,0 +1,86 @@
+<odoo>
+
+    <template id="hms_patient_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="patient">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <table style="width:100%">
+                            <tr margin="10px">
+                                <td padding="20px">
+                                    <h1 style="color:red">Patient Status Report</h1>
+                                </td>
+                                <td padding="20px">
+                                    <img t-attf-src="data:image/jpg;base64,{{patient.image}}" style="align:right; width:200px;height:150px;"/>
+                                </td>
+                            </tr>
+                            <tr margin="10px">
+                                <td padding="20px">
+                                    <h3 style="color:black">
+                                        Name: <span t-field="patient.first_name"/> <span t-field="patient.last_name"/>
+                                    </h3>
+                                </td>
+                                <td padding="20px">
+                                    <h3 style="color:black">
+                                        Birth Date: <span t-field="patient.birth_date"/>
+                                    </h3>
+                                </td>
+                            </tr>
+                            <tr margin="10px">
+                                <td padding="20px">
+                                    <h3 style="color:black">
+                                        Age: <span t-field="patient.age"/>
+                                    </h3>
+                                </td>
+                                <td padding="20px">
+                                    <h3 style="color:black">
+                                        PCR: <span t-field="patient.pcr"/>
+                                    </h3>
+                                </td>
+                            </tr>
+                            <tr margin="10px">
+                                <td padding="20px">
+                                     <h3 style="color:black">
+                                         Department: <span t-field="patient.department_id"/>
+                                    </h3>
+                                </td>
+                                <td padding="20px">
+                                    <h3 style="color:black">
+                                        Blood Type: <span t-field="patient.blood_type"/>
+                                    </h3>
+                                </td>
+                            </tr>
+                            <tr margin="10px">
+                                <td padding="20px">
+                                    <h3 style="color:black">
+                                        Email: <span t-field="patient.email"/>
+                                    </h3>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    <br/>
+                    <h3 style="color:blue">
+                            Log History
+                    </h3>
+                    <table class="table">
+                        <tr style="background-color:blue;">
+                            <th>User</th>
+                            <th>Date</th>
+                            <th>Info</th>
+                        </tr>
+                        <t t-foreach="patient.log_ids" t-as="log">
+                            <tr>
+                                <td><span t-field="log.created_by"/></td>
+                                <td><span t-field="log.created_date"/></td>
+                                <td><span t-field="log.description"/></td>
+                            </tr>
+                        </t>
+                    </table>
+                </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
